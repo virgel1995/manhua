@@ -123,3 +123,70 @@ export async function addUser(data) {
     };
   }
 }
+
+export async function deleteUser(id) {
+  try {
+    const user = await User.findByIdAndDelete(id);
+    return {
+      status: "Sucess",
+      data: "User Url Hass Benn  Delete Successfully",
+    };
+  } catch (error) {
+    console.log(error);
+    return {
+      status: "Error",
+      error: error.message,
+    };
+  }
+}
+
+export async function updateUser(id, data) {
+  try {
+    const user = await User.findById(id);
+    user.name = data.name ?? user.name;
+    user.email = data.email ?? user.email;
+    user.password = data.password ?? user.password;
+    user.username = data.username ?? user.username;
+    await user.save();
+    return {
+      status: "Sucess",
+      data: user ?? "No Data Found",
+    };
+  } catch (error) {
+    console.log(error);
+    return {
+      status: "Error",
+      error: error.errors ?? error,
+    };
+  }
+}
+
+/**
+ * @swagger
+ * components:
+ *   schemas:
+ *     User:
+ *       type: object
+ *       properties:
+ *         name:
+ *           type: string
+ *         email:
+ *           type: string
+ *         userType:
+ *           type: string
+ *           enum : ["user", "creator"]
+ *         password:
+ *           type: string
+ *         isAdmin:
+ *           type: boolean
+ *         username:
+ *           type: string
+ *         avatar:
+ *           type: string
+ *         coins:
+ *           type: number
+ *         access_token:
+ *           type: string
+ *         refresh_token:
+ *           type: string
+ */

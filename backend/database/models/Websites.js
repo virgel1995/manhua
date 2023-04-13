@@ -1,5 +1,4 @@
 import mongoose, { Schema, model } from "mongoose";
-import { removeItemAll } from "../../utils/functions.js";
 
 const websitesModel = new Schema(
   {
@@ -140,3 +139,24 @@ export async function findById(id) {
     };
   }
 }
+
+
+/**
+ * @swagger
+ * components:
+ *   schemas:
+ *     Websites:
+ *       type: object
+ *       properties:
+ *         url:
+ *           type: string
+ *         logo:
+ *           type: string
+ *         type:
+ *           type: string
+ *           enum : ["manga", "manhua", "anime"]
+ *         langs:
+ *           type: array[String]
+ *         user:
+ *            $ref: '#/components/schemas/User'
+ */
