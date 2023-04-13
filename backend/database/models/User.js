@@ -126,7 +126,7 @@ export async function addUser(data) {
 
 export async function deleteUser(id) {
   try {
-    const user = await User.findByIdAndDelete(id);
+     await User.findByIdAndDelete(id);
     return {
       status: "Sucess",
       data: "User Url Hass Benn  Delete Successfully",

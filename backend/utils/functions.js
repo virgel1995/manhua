@@ -1,6 +1,6 @@
 import jwt from "jsonwebtoken";
-import mg from "mailgun-js";
-
+// eslint-disable-next-line no-undef
+const procc = process.env
 export function makeuid(length) {
   let result = "";
   const characters =
@@ -22,7 +22,7 @@ export const generateToken = (user) => {
       email: user.email,
       isAdmin: user.isAdmin,
     },
-    process.env.JWT_SECRET,
+    procc.JWT_SECRET,
     {
       expiresIn: "30d", // 30 Days
     }

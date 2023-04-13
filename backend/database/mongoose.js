@@ -1,7 +1,9 @@
 import mongoose from "mongoose";
+// eslint-disable-next-line no-undef
+const procc = process.env
 
 const MONGODB_URI =
-  process.env.MONGODB_URI || "mongodb://127.0.0.1:27017/virus24";
+  procc.MONGODB_URI || "mongodb://127.0.0.1:27017/virus24";
 
 if (!MONGODB_URI) {
   throw new Error(
@@ -16,7 +18,7 @@ const dbConnect = async () => {
   };
   await mongoose
     .connect(MONGODB_URI, opts)
-    .then((mongoose) => {
+    .then(() => {
       console.log("db connected");
     })
     .catch((e) => {

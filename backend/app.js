@@ -4,9 +4,11 @@ import dotenv from "dotenv";
 import cors from 'cors'
 import morgan from "morgan"
 dotenv.config();
-import { createRequire } from 'module';
-const require = createRequire(import.meta.url);
+// import { createRequire } from 'module';
+// const require = createRequire(import.meta.url);
 
+// eslint-disable-next-line no-undef
+const procc = process.env
 //  my imports
 import dbConnect from "./database/mongoose.js";
 // helpers
@@ -22,7 +24,7 @@ const specDoc = swaggerJsdoc(swaggerConfig);
 //  import routes from middleware
 import { userRoutes, websitesRoutes } from "./routes/index.js";
 
-const PORT = process.env.PORT || 3000;
+const PORT = procc.PORT || 3000;
 //  app
 const app = express();
 //  for encoded requests && application/json

@@ -108,7 +108,7 @@ export async function updateSite(id, data) {
 
 export async function deleteSite(id) {
   try {
-    const website = await Webs.findByIdAndDelete(id);
+     await Webs.findByIdAndDelete(id);
     return {
       status: "Sucess",
       data: "Website Url Hass Benn  Delete Successfully",
